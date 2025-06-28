@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Intelligence Briefing Design System */
+/* Main background for the entire application */
+body {
+  background: radial-gradient(circle at top left, #1E3A8A 0%, #111827 60%);
+  color: #FAFAFA; /* Default text color */
+  font-family: 'Inter', sans-serif;
+}
+
+/* The core class for our glass panels */
+.glass-panel {
+  background: rgba(250, 250, 250, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(250, 250, 250, 0.2);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+/* Interactive elements styling */
+.glass-interactive {
+  color: #A8BDB2; /* Soft Sage accent color */
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.glass-interactive:hover {
+  color: #C1D1C7;
+}
+
+/* Secondary text styling */
+.glass-secondary {
+  opacity: 0.7;
+}
+
+/* Highlight effect for scroll-to citations */
+.quote-highlight {
+  background: rgba(168, 189, 178, 0.2);
+  border-color: #A8BDB2;
+  transition: all 0.3s ease;
+}
+
+/* Override dark mode for glass design */
+.dark .glass-panel {
+  background: rgba(250, 250, 250, 0.1);
+  border: 1px solid rgba(250, 250, 250, 0.2);
+  color: #FAFAFA;
+}
+
+@layer base {
+  :root {
+    /* Premium Brand Colors */
+    --primary: 221 91% 26%; /* Indigo/Navy #1E3A8A */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 157 17% 67%; /* Sage/Cool Gray Green #A8BDB2 */
+    --secondary-foreground: 221 91% 26%;
+    
+    /* Premium Backgrounds */
+    --background: 0 0% 98%; /* #FAFAFA */
+    --foreground: 0 0% 20%; /* #333333 */
+    --muted: 0 0% 96%; /* #F5F5F5 */
+    --muted-foreground: 0 0% 33%; /* #555555 */
+    
+    /* Card & Surface Colors */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 20%;
+    
+    /* Accent Colors */
+    --accent: 157 17% 67%; /* Sage accent */
+    --accent-foreground: 221 91% 26%;
+    
+    /* Alert Colors - Used Sparingly */
+    --warning: 47 85% 38%; /* #EAB308 */
+    --destructive: 0 73% 48%; /* #DC2626 */
+    --destructive-foreground: 0 0% 100%;
+    --success: 142 71% 45%; /* #22C55E */
+    --success-foreground: 0 0% 100%;
+    
+    /* Neutral Elements */
+    --border: 0 0% 92%; /* #EAEAEA */
+    --input: 0 0% 96%;
+    --ring: 221 91% 26%;
+    
+    /* Premium Component Styles */
+    --radius: 0.75rem; /* 12px rounded corners */
+    --shadow-soft: 0 4px 16px rgba(0, 0, 0, 0.06);
+    --shadow-elevated: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  .dark {
+    /* Dark mode with same premium feel */
+    --background: 221 39% 11%;
+    --foreground: 0 0% 95%;
+    --card: 221 39% 11%;
+    --card-foreground: 0 0% 95%;
+    --popover: 221 39% 11%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 221 91% 26%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 157 17% 40%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 221 39% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 157 17% 40%;
+    --accent-foreground: 0 0% 95%;
+    --destructive: 0 73% 48%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 221 39% 15%;
+    --input: 221 39% 15%;
+    --ring: 221 91% 26%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Work Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+}
+
+@layer components {
+  /* Premium Card Styles */
+  .premium-card {
+    @apply bg-card border border-border rounded-xl shadow-[0_4px_16px_rgba(0,0,0,0.06)] 
+           transition-all duration-200 ease-out hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] 
+           hover:scale-[1.02] hover:-translate-y-1;
+  }
+
+  /* Premium Button Styles */
+  .premium-button {
+    @apply font-medium rounded-lg transition-all duration-200 ease-out
+           hover:scale-[1.02] active:scale-[0.98] shadow-sm hover:shadow-md;
+  }
+
+  /* Premium Input Styles */
+  .premium-input {
+    @apply border border-border bg-background rounded-lg px-4 py-3 
+           transition-all duration-200 ease-out focus:ring-2 focus:ring-primary focus:ring-opacity-20
+           focus:border-primary placeholder:text-muted-foreground;
+  }
+
+  /* Smooth Animations */
+  .fade-in {
+    animation: fadeIn 400ms ease-out;
+  }
+
+  .slide-up {
+    animation: slideUp 300ms ease-out;
+  }
+
+  /* Skeleton Loader */
+  .skeleton {
+    @apply bg-muted animate-pulse rounded-lg;
+  }
+
+  /* Section Highlighting */
+  .section-highlight {
+    @apply bg-[#DDE6E1]/30 rounded-xl p-6;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
